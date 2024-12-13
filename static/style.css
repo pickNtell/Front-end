@@ -270,6 +270,57 @@ body {
     margin-top: 20px;
 }
 
+/* 만들기 버튼 스타일 */
+button[type="submit"] {
+  width: 80px; /* 버튼 너비 */
+  height: 30px; /* 버튼 높이 */
+  border: 1.5px solid;
+  border-radius: 8px; /* 모서리 둥글게 */
+  font-size: 14px; /* 폰트 크기 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 효과 */
+}
+
+button[type="submit"]:hover {
+  background-color: #353535; /* 호버 시 배경 색상 변경 */
+  color:#ccc;
+  transform: translateY(-2px); /* 호버 시 살짝 위로 이동 */
+}
+
+button[type="submit"]:active {
+  transform: translateY(0); /* 클릭 시 원래 위치로 */
+}
+
+/* 진동 효과 */
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.shake {
+  animation: shake 0.2s ease-in-out 4 both;
+}
+
+input:invalid, select:invalid {
+  border: 2px solid #ff0000;
+}
+
 /* =============== [로딩] =============== */
 
 /* 로딩창 배경 */

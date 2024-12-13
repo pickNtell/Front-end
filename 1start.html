@@ -11,7 +11,6 @@
     <body>      
     <!-- 컨테이너 -->
     <div class="container" style="position: relative;">
-
         <!-- 질문 버튼 및 텍스트 -->
         <div class="question-container">
             <div class="question-button" onclick="togglePopup()">
@@ -199,6 +198,7 @@
 
     // 팝업 표시/숨기기 토글
     function togglePopup(event) {
+        
             if (event) {
                 event.stopPropagation();
             }
@@ -210,9 +210,46 @@
             button.classList.toggle('open');
             text.classList.toggle('hidden');
         }
+    
+    //필수 입력 경고창 부분
+    document.querySelector('form').addEventListener('submit', function (event) {
+    const ageField = document.getElementById('age');
+    const genderField = document.getElementById('gender');
+    const genreField = document.getElementById('genre');
+    let valid = true;
 
+    // 유효성 검사 및 진동 효과 적용
+    if (!ageField.value) {
+        applyShakeEffect(ageField);
+        valid = false;
+    }
+    if (!genderField.value) {
+        applyShakeEffect(document.querySelector('.user-gender'));
+        valid = false;
+    }
+    if (!genreField.value) {
+        applyShakeEffect(genreField);
+        valid = false;
+    }
 
-        //로딩창 관련 부분
+    if (!valid) {
+        event.preventDefault(); // 폼 제출 중단
+        return;
+    }
+
+    // 모든 필수 입력값이 입력된 경우 로딩창 표시
+    showLoadingScreen();
+});
+
+// 진동 효과를 적용하는 함수
+function applyShakeEffect(element) {
+    element.classList.add('shake');
+    setTimeout(() => {
+        element.classList.remove('shake');
+    }, 500); // 0.5초 후 진동 클래스 제거
+}
+
+    //로딩창 관련 부분
     function showLoadingScreen() {
     document.getElementById('loading-screen').style.display = 'flex';
     }
@@ -221,15 +258,7 @@
     document.getElementById('loading-screen').style.display = 'none';
     }
 
-    // 서버 없이 테스트해서 아래 코드는 수정 필요
-    // 예시: 폼 제출 시 로딩창 표시
-    document.querySelector('form').addEventListener('submit', function (event) {
-    event.preventDefault(); // 실제 서버가 없으므로 기본 동작 방지
-    showLoadingScreen();
-    setTimeout(() => {
-        hideLoadingScreen();
-    }, 14000); // 테스트용으로 14초 후 로딩 종료
-    });    
+    
 </script>
 </body>
 </html>

@@ -8,21 +8,21 @@
   <title>Pick & Tell</title>
 </head>
 
-    <body>      
+    <body>
     <!-- 컨테이너 -->
     <div class="container" style="position: relative;">
-        <!-- 질문 버튼 및 텍스트 -->
-        <div class="question-container">
-            <div class="question-button" onclick="togglePopup()">
-                <button class="close-button" onclick="togglePopup(event)">×</button>
-                <h2>사용 설명서</h2>
-                <p>나이, 성별, 장르를 선택하고 "만들기" 버튼을 클릭하세요. 세부사항을 통해 이야기를 맞춤 설정할 수 있습니다.
-                    등장인물의 이름과 성별을 고를 수 있습니다. 원하는 줄거리도 입력할 수 있습니다.
-                </p>
-            </div>
-            <span class="question-text" id="questionText">사용설명서</span>
+    <!-- 질문 버튼 및 텍스트 -->
+    <div class="question-container">
+        <div class="question-button" onclick="togglePopup()">
+            <button class="close-button" onclick="togglePopup(event)">×</button>
+            <h2>사용 설명서</h2>
+            <p>필수 입력 : 사용자의 나이, 성별, 원하는 장르<br>
+                세부사항을 통해 동화 이야기를 맞춤 설정할 수 있습니다.<br>
+                추가 입력 : 등장인물의 이름, 성별, 줄거리
+            </p>
         </div>
-
+        <span class="question-text" id="questionText">사용설명서</span>
+    </div>
         <!-- 제목 -->
         <h1>Pick & Tell</h1>
 

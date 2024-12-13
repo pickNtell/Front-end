@@ -28,7 +28,8 @@
         <h1>Pick & Tell</h1>
 
         <!-- 폼 -->
-        <form action="/create/" method="post">
+        <!-- <form action="/create/" method="post"> -->
+        <form method="post">
         {% csrf_token %}
             <!-- 나이 입력 -->
             <div class="form-group">
@@ -180,21 +181,21 @@
 
     // 새로운 입력 필드 추가
     characterSection.appendChild(newCharacter);
-}
+    }
 
-/**
- * 첫 번째 줄 '등장인물' 라벨 복원
- */
-function updateFirstCharacterLabel() {
-    const characterRows = document.querySelectorAll('.character-row'); // 모든 등장인물 row
-    if (characterRows.length > 0) {
-        const firstRow = characterRows[0]; // 첫 번째 row 가져오기
-        const label = firstRow.querySelector('.character-label'); // 라벨 찾기
-        if (label) {
-            label.textContent = '등장인물'; // 라벨 텍스트 설정
+    /**
+     * 첫 번째 줄 '등장인물' 라벨 복원
+     */
+    function updateFirstCharacterLabel() {
+        const characterRows = document.querySelectorAll('.character-row'); // 모든 등장인물 row
+        if (characterRows.length > 0) {
+            const firstRow = characterRows[0]; // 첫 번째 row 가져오기
+            const label = firstRow.querySelector('.character-label'); // 라벨 찾기
+            if (label) {
+                label.textContent = '등장인물'; // 라벨 텍스트 설정
+            }
         }
     }
-}
 
     // 팝업 표시/숨기기 토글
     function togglePopup(event) {
@@ -209,8 +210,39 @@ function updateFirstCharacterLabel() {
             button.classList.toggle('open');
             text.classList.toggle('hidden');
         }
+
+
+        //로딩창 관련 부분
+    function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'flex';
+    }
+
+    function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
+    }
+
+    // 서버 없이 테스트해서 아래 코드는 수정 필요
+    // 예시: 폼 제출 시 로딩창 표시
+    document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // 실제 서버가 없으므로 기본 동작 방지
+    showLoadingScreen();
+    setTimeout(() => {
+        hideLoadingScreen();
+    }, 14000); // 테스트용으로 14초 후 로딩 종료
+    });    
 </script>
 </body>
 </html>
 
-
+<!-- 로딩창 -->
+<div id="loading-screen" style="display: none;">
+    <div class="loading-animation">
+      <div class="book">
+        <div class="page">
+          <div class="writing"></div>
+        </div>
+        <div class="pencil"></div>
+      </div>
+      <p>이야기를 쓰고 있어요<span class="dots"></span></p>
+    </div>
+  </div>

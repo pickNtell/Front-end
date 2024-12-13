@@ -26,20 +26,17 @@ body {
 
 /* 기본 버튼 스타일 */
 .question-button {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-image: url('img/question_icon.png');
+    background-size: cover; /* 이미지 크기를 버튼에 맞게 조정 */
+    background-position: center; /* 이미지를 가운데 정렬 */
     cursor: pointer;
     text-align: center;
     line-height: 35px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease; /* 버튼 크기 및 색상 변화 애니메이션 */
+    transition: left 0.2s ease;
     overflow: hidden;
     position: relative;
-    max-height: 35px; /* 초기 높이 */
 }
 
 /* 확장된 팝업 스타일 */
@@ -52,9 +49,13 @@ body {
     background-color: #fff;
     text-align: left; /* 텍스트 정렬 */
     border-radius: 10px; /* 팝업 형태 */
+    right: -200px;
+    background-image: none; /* 확장 시 이미지 제거 */
+    background-color: #fff; /* 배경색 변경 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.question-button h2, .question-button p, .question-button button {
+.question-button h2, .question-button p, .question-text.hidden, .question-button button {
     display: none; /* 기본적으로 숨김 */
 }
 
@@ -96,11 +97,6 @@ body {
     font-size: 12px;
     color: #666;
     text-align: center;
-    transition: opacity 0.4s ease; /* 텍스트 사라지는 애니메이션 */
-}
-
-.question-text.hidden {
-    opacity: 0; /* 텍스트 숨김 */
 }
 
 /* =============== [컨테이너] =============== */
@@ -110,6 +106,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
     border-radius: 10px; /* 모서리 둥글게 */
     padding: 20px; /* 내부 패딩 */
+    position: relative;
 }
 
 .container h1 {
@@ -243,7 +240,7 @@ body {
     color: white;
 }
 
-.add-character {
+.add-character, .remove-character {
     width: 35px;
     height: 35px;
     font-size: 18px;
